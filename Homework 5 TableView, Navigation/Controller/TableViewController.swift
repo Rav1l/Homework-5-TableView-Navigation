@@ -7,22 +7,12 @@
 
 import UIKit
 
-protocol TableViewControllerDelegate: AnyObject {
-    func update()
-}
-
-class TableViewController: UITableViewController, TableViewControllerDelegate {
+class TableViewController: UITableViewController {
     
-    static var indexUser: Int? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -39,11 +29,10 @@ class TableViewController: UITableViewController, TableViewControllerDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
         let user = MockService.data[indexPath.row]
-        //TableViewController.indexUser = user
         cell.setupUserName(user: user)
         return cell
     }
-    
+    //Переход на ViewController с передачей туда данных
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "showVC" else { return }
         guard let viewController = segue.destination as? ViewController else { return }
@@ -52,11 +41,7 @@ class TableViewController: UITableViewController, TableViewControllerDelegate {
             viewController.user = user
         }
     }
-
-    func update() {
-        self.tableView.reloadData()
-    }
-    
+    //Создание пользовотелия в MockService и ячейки в TableViewController или изменине данных пользователя в MockService и в ячейке в TableViewController
     @IBAction func saveData(_ unwindSegue: UIStoryboardSegue) {
         switch unwindSegue.identifier {
         case "createUser":
@@ -73,5 +58,4 @@ class TableViewController: UITableViewController, TableViewControllerDelegate {
         default: break
         }
     }
-    
 }

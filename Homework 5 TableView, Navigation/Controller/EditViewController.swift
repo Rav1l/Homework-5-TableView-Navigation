@@ -19,7 +19,6 @@ class EditViewController: UIViewController {
     
     var user: User? = nil
     var createUser: User? = nil
-    var index: Int? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +30,13 @@ class EditViewController: UIViewController {
         self.jobTextField.text = user.job
         self.addressTextField.text = user.address
         self.editAvatarImage.image = UIImage(named: user.avatar)
-       
     }
     
-   
+   //Переход на предыдущий конторллер
     @IBAction func didTapGoBackCancelButton(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
     }
-    
+    //Создание пользователя или изменение данных пользователя
     @IBAction func onSave(_ sender: Any) {
         if user == nil {
             createUser = User(name: self.nameTextField.text ?? " " ,

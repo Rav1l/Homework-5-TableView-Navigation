@@ -64,7 +64,7 @@
         <!--View Controller-->
         <scene sceneID="dpv-ci-LIx">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="l03-AP-bqU" customClass="ViewController" customModule="Homework_5_TableView__Navigation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="l03-AP-bqU" customClass="ViewController" customModule="Homework_5_TableView__Navigation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nNM-lE-aUt">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

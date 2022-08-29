@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var changeButton: UIButton!
     
     var user: User? = nil
-    
     private var isShortName = false
     
     override func viewDidLoad() {
@@ -28,17 +27,17 @@ class ViewController: UIViewController {
         self.avatarImage.image = UIImage(named: user?.avatar ?? "default")
         
     }
-    
+    //переход на EditViewController с передачей туда данных
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "editUser" else { return }
         guard let editVC = segue.destination as? EditViewController else { return }
         editVC.user = self.user
     }
-    
+    //Копирование адреса
     @IBAction func didTapCopyAddressButton(_ sender: Any) {
         UIPasteboard.general.string = self.user?.address
     }
-    
+    //Изменение nameLable на ФИО или имя
     @IBAction func didTapChangeButton(_ sender: Any) {
         self.isShortName.toggle()
         if isShortName {
