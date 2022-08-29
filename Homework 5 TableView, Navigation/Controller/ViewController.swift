@@ -49,21 +49,4 @@ class ViewController: UIViewController {
             self.changeButton.setTitle("Имя", for: .normal)
         }
     }
-    
-    @IBAction func saveData(_ unwindSegue: UIStoryboardSegue) {
-        switch unwindSegue.identifier {
-        case "createUser":
-            guard let source = unwindSegue.source as? EditViewController else { return }
-            guard let user = source.createUser else { return }
-            MockService.data.append(user)
-           
-        case "updateUser":
-            guard let source = unwindSegue.source as? EditViewController else { return }
-            guard let user = source.user else { return }
-//            guard let index = .indexPathForSelectedRow else { return }
-//            MockService.data[index.row] = user
-            
-        default: break
-        }
-    }
 }

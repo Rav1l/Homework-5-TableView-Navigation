@@ -57,21 +57,21 @@ class TableViewController: UITableViewController, TableViewControllerDelegate {
         self.tableView.reloadData()
     }
     
-//    @IBAction func saveData(_ unwindSegue: UIStoryboardSegue) {
-//        switch unwindSegue.identifier {
-//        case "createUser":
-//            guard let source = unwindSegue.source as? EditViewController else { return }
-//            guard let user = source.createUser else { return }
-//            MockService.data.append(user)
-//            self.tableView.reloadData()
-//        case "updateUser":
-//            guard let source = unwindSegue.source as? EditViewController else { return }
-//            guard let user = source.user else { return }
-//            guard let index = self.tableView.indexPathForSelectedRow else { return }
-//            MockService.data[index.row] = user
-//            self.tableView.reloadData()
-//        default: break
-//        }
-//    }
+    @IBAction func saveData(_ unwindSegue: UIStoryboardSegue) {
+        switch unwindSegue.identifier {
+        case "createUser":
+            guard let source = unwindSegue.source as? EditViewController else { return }
+            guard let user = source.createUser else { return }
+            MockService.data.append(user)
+            self.tableView.reloadData()
+        case "updateUser":
+            guard let source = unwindSegue.source as? EditViewController else { return }
+            guard let user = source.user else { return }
+            guard let index = self.tableView.indexPathForSelectedRow else { return }
+            MockService.data[index.row] = user
+            self.tableView.reloadData()
+        default: break
+        }
+    }
     
 }

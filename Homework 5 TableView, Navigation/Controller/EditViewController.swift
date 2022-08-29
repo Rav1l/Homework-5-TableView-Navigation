@@ -47,10 +47,6 @@ class EditViewController: UIViewController {
                               job: self.jobTextField.text ?? " ",
                               address: self.addressTextField.text ?? " ",
                               avatar: "default")
-            //performSegue(withIdentifier: "createUser", sender: self)
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let viewController = storyboard.instantiateViewController(identifier: "ViewController") as? ViewController else { return }
-            show(viewController, sender: nil)
             performSegue(withIdentifier: "createUser", sender: self)
         } else {
             self.user?.name = self.nameTextField.text ?? " "
@@ -60,8 +56,5 @@ class EditViewController: UIViewController {
             self.user?.address = self.self.addressTextField.text ?? " "
             performSegue(withIdentifier: "updateUser", sender: self)
         }
-        
-        
     }
-    
 }

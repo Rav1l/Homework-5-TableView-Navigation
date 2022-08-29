@@ -52,7 +52,7 @@
                     <navigationItem key="navigationItem" title="Контакты" id="qm8-R7-4sd">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0CB-1N-xZq">
                             <connections>
-                                <segue destination="cM3-jR-Qyv" kind="show" identifier="addUser" id="Unb-a8-K3i"/>
+                                <segue destination="cM3-jR-Qyv" kind="show" identifier="createUser" id="Unb-a8-K3i"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -116,7 +116,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="didTapAddressButton:" destination="l03-AP-bqU" eventType="touchUpInside" id="R61-KT-8e0"/>
+                                    <action selector="didTapCopyAddressButton:" destination="l03-AP-bqU" eventType="touchUpInside" id="y8f-Gr-tJw"/>
                                 </connections>
                             </button>
                         </subviews>
