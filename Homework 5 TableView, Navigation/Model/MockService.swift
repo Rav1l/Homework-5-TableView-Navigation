@@ -9,9 +9,9 @@ import Foundation
 
 class MockService {
     static var data = [
-        User(name: "Олег", surname: "Хабаров", patronymic: "Иванович", job: "Банкир", city: "Кострома", avatar: "default"),
-        User(name: "Александр", surname: "Белугин", patronymic: "Эдуардович", job: "Курьер", city: "Москва",avatar: "default"),
-        User(name: "Руслан", surname: "Усачев", patronymic: "Эдуардович", job: "Блогер", city: "Санкт-Петербург",avatar: "usachev"),
-        User(name: "Стаст", surname: "Давыдов", patronymic: " ", job: "Блогер", city: "Рига",avatar: "davidov")
+        User(name: "Олег", surname: "Хабаров", patronymic: "Иванович", job: "Банкир", address: "Кострома", avatar: "default"),
+        User(name: "Александр", surname: "Белугин", patronymic: "Эдуардович", job: "Курьер", address: "Москва",avatar: "default"),
+        User(name: "Руслан", surname: "Усачев", patronymic: "Эдуардович", job: "Блогер", address: "Санкт-Петербург",avatar: "usachev"),
+        User(name: "Стаст", surname: "Давыдов", patronymic: " ", job: "Блогер", address: "Рига",avatar: "davidov")
     ]
 }

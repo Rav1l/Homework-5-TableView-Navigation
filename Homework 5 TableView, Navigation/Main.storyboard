@@ -52,7 +52,7 @@
                     <navigationItem key="navigationItem" title="Контакты" id="qm8-R7-4sd">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0CB-1N-xZq">
                             <connections>
-                                <segue destination="cM3-jR-Qyv" kind="show" identifier="createUser" id="Unb-a8-K3i"/>
+                                <segue destination="cM3-jR-Qyv" kind="show" identifier="addUser" id="Unb-a8-K3i"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -64,7 +64,7 @@
         <!--View Controller-->
         <scene sceneID="dpv-ci-LIx">
             <objects>
-                <viewController id="l03-AP-bqU" customClass="ViewController" customModule="Homework_5_TableView__Navigation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="l03-AP-bqU" customClass="ViewController" customModule="Homework_5_TableView__Navigation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nNM-lE-aUt">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,11 +144,14 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="0QQ-Ud-Deh">
-                        <barButtonItem key="rightBarButtonItem" title="Править" id="TS3-bQ-FbU">
-                            <connections>
-                                <segue destination="cM3-jR-Qyv" kind="show" identifier="editUser" id="lGc-Do-8fu"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Править" id="TS3-bQ-FbU">
+                                <connections>
+                                    <segue destination="cM3-jR-Qyv" kind="show" identifier="editUser" id="lGc-Do-8fu"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem id="D2B-0p-D58"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -234,7 +237,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Готово" id="3Nu-ae-kuZ">
                             <connections>
-                                <action selector="onSave:" destination="cM3-jR-Qyv" id="sKx-BC-Ljg"/>
+                                <action selector="onSave:" destination="cM3-jR-Qyv" id="D4g-aI-p3o"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -245,7 +248,8 @@
                         <outlet property="nameTextField" destination="9jG-o2-53q" id="sBP-X6-Zpl"/>
                         <outlet property="patronymicTextField" destination="wLx-D1-xaV" id="giw-NY-flD"/>
                         <outlet property="surnameTextField" destination="0hG-Kj-8Bc" id="B79-oh-1AL"/>
-                        <segue destination="96e-jf-Uct" kind="unwind" identifier="createUser" unwindAction="saveCreateData:" id="8gw-dv-xj1"/>
+                        <segue destination="96e-jf-Uct" kind="unwind" identifier="createUser" unwindAction="saveData:" id="Hku-7u-aOb"/>
+                        <segue destination="96e-jf-Uct" kind="unwind" identifier="updateUser" unwindAction="saveData:" id="22p-Fz-k9P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9J-yr-ecD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

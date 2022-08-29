@@ -12,7 +12,7 @@ struct User {
     var surname: String
     var patronymic: String
     var job: String
-    var city: String
+    var address: String
     var avatar: String
     
     var fullName: String {

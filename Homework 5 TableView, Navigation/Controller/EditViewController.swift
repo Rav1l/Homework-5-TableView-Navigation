@@ -19,6 +19,7 @@ class EditViewController: UIViewController {
     
     var user: User? = nil
     var createUser: User? = nil
+    var index: Int? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +29,9 @@ class EditViewController: UIViewController {
         self.surnameTextField.text = user.surname
         self.patronymicTextField.text = user.patronymic
         self.jobTextField.text = user.job
-        self.addressTextField.text = user.city
+        self.addressTextField.text = user.address
         self.editAvatarImage.image = UIImage(named: user.avatar)
+       
     }
     
    
@@ -43,12 +45,22 @@ class EditViewController: UIViewController {
                               surname: self.surnameTextField.text ?? " ",
                               patronymic: self.patronymicTextField.text ?? " ",
                               job: self.jobTextField.text ?? " ",
-                              city: self.addressTextField.text ?? " ",
+                              address: self.addressTextField.text ?? " ",
                               avatar: "default")
+            //performSegue(withIdentifier: "createUser", sender: self)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let viewController = storyboard.instantiateViewController(identifier: "ViewController") as? ViewController else { return }
+            show(viewController, sender: nil)
             performSegue(withIdentifier: "createUser", sender: self)
         } else {
-            
+            self.user?.name = self.nameTextField.text ?? " "
+            self.user?.surname = self.surnameTextField.text ?? " "
+            self.user?.patronymic = self.patronymicTextField.text ?? " "
+            self.user?.job = self.jobTextField.text ?? " "
+            self.user?.address = self.self.addressTextField.text ?? " "
+            performSegue(withIdentifier: "updateUser", sender: self)
         }
+        
         
     }
     

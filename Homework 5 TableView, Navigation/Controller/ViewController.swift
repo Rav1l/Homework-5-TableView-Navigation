@@ -16,13 +16,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var changeButton: UIButton!
     
     var user: User? = nil
+    
     private var isShortName = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nameLabel.text = user?.fullName
         self.jobLabel.text = self.user?.job
-        self.addressLabel.text = self.user?.city
+        self.addressLabel.text = self.user?.address
         self.avatarImage.layer.cornerRadius = self.avatarImage.frame.height / 2
         self.avatarImage.image = UIImage(named: user?.avatar ?? "default")
         
@@ -35,7 +36,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTapCopyAddressButton(_ sender: Any) {
-        UIPasteboard.general.string = self.user?.city
+        UIPasteboard.general.string = self.user?.address
     }
     
     @IBAction func didTapChangeButton(_ sender: Any) {
@@ -49,6 +50,20 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    
+    @IBAction func saveData(_ unwindSegue: UIStoryboardSegue) {
+        switch unwindSegue.identifier {
+        case "createUser":
+            guard let source = unwindSegue.source as? EditViewController else { return }
+            guard let user = source.createUser else { return }
+            MockService.data.append(user)
+           
+        case "updateUser":
+            guard let source = unwindSegue.source as? EditViewController else { return }
+            guard let user = source.user else { return }
+//            guard let index = .indexPathForSelectedRow else { return }
+//            MockService.data[index.row] = user
+            
+        default: break
+        }
+    }
 }

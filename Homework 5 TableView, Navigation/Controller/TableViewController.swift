@@ -7,13 +7,24 @@
 
 import UIKit
 
-class TableViewController: UITableViewController {
+protocol TableViewControllerDelegate: AnyObject {
+    func update()
+}
 
+class TableViewController: UITableViewController, TableViewControllerDelegate {
+    
+    static var indexUser: Int? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -28,6 +39,7 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
         let user = MockService.data[indexPath.row]
+        //TableViewController.indexUser = user
         cell.setupUserName(user: user)
         return cell
     }
@@ -41,13 +53,25 @@ class TableViewController: UITableViewController {
         }
     }
 
-    @IBAction func saveCreateData(_ unwindSegue: UIStoryboardSegue) {
-        guard unwindSegue.identifier == "createUser" else { return }
-        guard let source = unwindSegue.source as? EditViewController else { return }
-        if let user = source.createUser {
-            MockService.data.append(user)
-        }
+    func update() {
         self.tableView.reloadData()
     }
-
+    
+//    @IBAction func saveData(_ unwindSegue: UIStoryboardSegue) {
+//        switch unwindSegue.identifier {
+//        case "createUser":
+//            guard let source = unwindSegue.source as? EditViewController else { return }
+//            guard let user = source.createUser else { return }
+//            MockService.data.append(user)
+//            self.tableView.reloadData()
+//        case "updateUser":
+//            guard let source = unwindSegue.source as? EditViewController else { return }
+//            guard let user = source.user else { return }
+//            guard let index = self.tableView.indexPathForSelectedRow else { return }
+//            MockService.data[index.row] = user
+//            self.tableView.reloadData()
+//        default: break
+//        }
+//    }
+    
 }
